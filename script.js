@@ -2,6 +2,7 @@ const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const list = document.getElementById("todo-list");
 const validationMessage = document.getElementById("validation-message");
+const clearCompletedBtn = document.getElementById("clear-completed");
 
 const STORAGE_KEY = "todo-list-items";
 
@@ -81,6 +82,12 @@ form.addEventListener("submit", (event) => {
   todos.push({ text: value, completed: false });
   saveTodos();
   input.value = "";
+  renderTodos();
+});
+
+clearCompletedBtn.addEventListener("click", () => {
+  todos = todos.filter((todo) => !todo.completed);
+  saveTodos();
   renderTodos();
 });
 
