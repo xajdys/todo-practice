@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #dff7ff;
+  background: linear-gradient(135deg, #dff7ff, #ffe8d6);
 }
 
 .app {
