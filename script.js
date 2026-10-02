@@ -45,8 +45,12 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const value = input.value.trim();
-  if (!value) return;
+  if (!value) {
+    validationMessage.textContent = "Please enter a todo item.";
+    return;
+  }
 
+  validationMessage.textContent = "";
   todos.push({ text: value, completed: false });
   input.value = "";
   renderTodos();
