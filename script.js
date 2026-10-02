@@ -27,6 +27,7 @@ function getTodos() {
 }
 
 let todos = getTodos();
+let editingIndex = null;
 
 function saveTodos() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
@@ -53,6 +54,12 @@ function renderTodos() {
       text.style.textDecoration = "line-through";
     }
 
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.addEventListener("click", () => {
+      startEdit(index);
+    });
+
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener("click", () => {
@@ -63,9 +70,29 @@ function renderTodos() {
 
     item.appendChild(checkbox);
     item.appendChild(text);
+    item.appendChild(editBtn);
     item.appendChild(deleteBtn);
     list.appendChild(item);
   });
+}
+
+function startEdit(index) {
+  const currentText = todos[index].text;
+  const newText = prompt("Edit todo:", currentText);
+
+  if (newText === null) return; // User cancelled
+
+  const trimmedText = newText.trim();
+
+  if (!trimmedText) {
+    validationMessage.textContent = "Todo cannot be empty.";
+    return;
+  }
+
+  todos[index].text = trimmedText;
+  validationMessage.textContent = "";
+  saveTodos();
+  renderTodos();
 }
 
 form.addEventListener("submit", (event) => {
