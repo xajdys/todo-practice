@@ -39,6 +39,39 @@ button {
   cursor: pointer;
 }
 
+#todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+#todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+#todo-list li:last-child {
+  border-bottom: none;
+}
+
+#todo-list span {
+  flex: 1;
+}
+
+#todo-list input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+#todo-list button {
+  padding: 6px 10px;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
 #validation-message {
   color: #c0392b;
   min-height: 20px;
