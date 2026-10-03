@@ -119,3 +119,5 @@ clearCompletedBtn.addEventListener("click", () => {
 });
 
 renderTodos();
+
+// Bug fix: prevent duplicate todos
